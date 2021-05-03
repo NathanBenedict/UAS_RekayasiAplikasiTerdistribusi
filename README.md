@@ -1,4 +1,4 @@
-# UAS_RekayasiAplikasiTerdistribusi
+# UAS_RekayasaAplikasiTerdistribusi
 Berikut merupakan aplikasi berbasis Web API dengan kaidah Rest.
 Aplikasi yang dibuat adalah aplikasi List Resep Minuman. Aplikasi ini berisi cara pengambilan data dari dalam database (MySQL) dengan menggunakan Metode CRUD (Rest API) dimana database tersebut berisi data yang telah kita input.
 
