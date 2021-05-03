@@ -1,53 +1,58 @@
 FORMAT: 1A
-HOST: https://polls.apiblueprint.org/
+HOST: https://localhost/
 
-# nathanbenedictlotandy
+# UAS_RekayasaAplikasiTerdistribusi
 
-Polls is a simple API allowing consumers to view polls and vote in them.
 
-## Questions Collection [/questions]
+## List Drink Recipe [/Drinks]
 
-### List All Questions [GET]
+### List All Drink Recipe [GET/Drinks/Get.php]
+
+For those who want to see all the Recipe that the Database have :
 
 + Response 200 (application/json)
 
-        [
+        {
+          "drink": [
             {
-                "question": "Favourite programming language?",
-                "published_at": "2015-08-05T08:40:51.620Z",
-                "choices": [
-                    {
-                        "choice": "Swift",
-                        "votes": 2048
-                    }, {
-                        "choice": "Python",
-                        "votes": 1024
-                    }, {
-                        "choice": "Objective-C",
-                        "votes": 512
-                    }, {
-                        "choice": "Ruby",
-                        "votes": 256
-                    }
-                ]
+              "Name": "BlackBerry Mojito ",
+              "Type": "Refresh, Non-Alcohol",
+              "Desc": "A guilt-free strawberry milkshake that both kids and adults will enjoy.",
+              "Ing": "- 1/2 c. blackberries\n- handful fresh mint leaves\n- Juice of 2 limes\n- 1 tsp. sugar\n- 1/2 c. light rum\n- Crushed ice\n- club soda",
+              "Step": "- In a small bowl, muddle blackberries. Set aside.\n- Place mint leaves in bottom of glasses. Divide and spoon blackberry mixture on top.\n- Add rum, sugar, and lime juice and stir to combine. Top with crushed ice.\n- Add club soda and garnish with mint leaves and more blackberries."
+            },
+            {
+              "Name": "Blackberry Mojito",
+              "Type": "Alcoholic Cocktail",
+              "Desc": "Crushed, ripe blackberries give this mojito a tart-sweet kick.",
+              "Ing": "1/2 c. blackberries\nhandful fresh mint leaves\nJuice of 2 limes\n1 tsp. sugar\n1/2 c. light rum\nCrushed ice\nclub soda",
+              "Step": "- In a small bowl, muddle blackberries. Set aside.\n- Place mint leaves in bottom of glasses. Divide and spoon blackberry mixture on top.\n- Add rum, sugar, and lime juice and stir to combine. Top with crushed ice.\n- Add club soda and garnish with mint leaves and more blackberries."
+            },
+            {
+              "Name": "Skinny Strawberry Milkshake",
+              "Type": "Milkshake, Ice",
+              "Desc": "A guilt-free strawberry milkshake that both kids and adults will enjoy.",
+              "Ing": "- 1 cup 2% milk, divided\n- 2 cups hulled and halved strawberries\n- 1 teaspoon fresh lime juice, or more to taste\n- 1 teaspoon vanilla extract",
+              "Step": "- Pour 1/2 cup milk into an ice cube tray and freeze until firm.\n- Combine milk ice cubes, remaining 1/2 cup milk, strawberries, lime juice, and vanilla in a blender; blend until smooth. Serve immediately."
             }
-        ]
+          ]
+        }
 
-### Create a New Question [POST]
+### Create a New Drink Recipe [POST]
 
-You may create your own question using this action. It takes a JSON
-object containing a question and a collection of answers in the
-form of choices.
+For those who wants to share their own Drink Recipe :
 
 + Request (application/json)
 
         {
-            "question": "Favourite programming language?",
-            "choices": [
-                "Swift",
-                "Python",
-                "Objective-C",
-                "Ruby"
+            "drink": [
+                {
+                  "Name": "Drink Name",
+                  "Type": "Drink Type",
+                  "Desc": "Description about the Drink",
+                  "Ing": "Ingredients for making the Drink",
+                  "Step": "Step by step how to make the Drink"
+                }
             ]
         }
 
@@ -55,26 +60,78 @@ form of choices.
 
     + Headers
 
-            Location: /questions/2
+            Location: /Drinks/Post.php
 
     + Body
 
             {
-                "question": "Favourite programming language?",
-                "published_at": "2015-08-05T08:40:51.620Z",
-                "choices": [
+                "drink": [
                     {
-                        "choice": "Swift",
-                        "votes": 0
-                    }, {
-                        "choice": "Python",
-                        "votes": 0
-                    }, {
-                        "choice": "Objective-C",
-                        "votes": 0
-                    }, {
-                        "choice": "Ruby",
-                        "votes": 0
+                      "Name": "",
+                      "Type": "",
+                      "Desc": "",
+                      "Ing": "",
+                      "Step": ""
                     }
                 ]
+            }
+
+### Edit Drink Recipe [PUT]
+
+For those who already put their recipe in the database but put the wrong data, they can edit it:
+
++ Request (application/json)
+
+        {
+            "drink": [
+                {
+                    "ID": "Drink ID",
+                }
+            ]
+        }
+
++ Response 201 (application/json)
+
+    + Headers
+
+            Location: /Drinks/put
+
+    + Body
+
+            {
+                "drink": [
+                    {
+                      "Name": "",
+                      "Type": "",
+                      "Desc": "",
+                      "Ing": "",
+                      "Step": ""
+                    }
+                ]
+            }
+            
+### Delete Drink Recipe [DELETE/uas/delete]
+
+For those who want to Delete Their Recipe from Database
+
++ Request (application/json)
+
+        {
+            "drink": [
+                {
+                    "ID": "Drink ID",
+                }
+            ]
+        }
+        
++ Response 201 (application/json)
+
+    + Headers
+
+            Location: /Drinks/delete
+
+    + Body
+
+            {
+                " There's a problem when we want to delete the data "
             }
